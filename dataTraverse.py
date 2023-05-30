@@ -10,15 +10,19 @@ output_csv = 'C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\song
 data = {}
 
 # Add the headers
-headers = ['artist_mbid', 'artist_mbtags', 'artist_mbtags_count', 'artist_name', 'artist_playmeid',
-           'artist_terms', 'artist_terms_freq', 'artist_terms_weight', 'audio_md5', 'bars_confidence',
-           'bars_start', 'beats_confidence', 'beats_start', 'danceability', 'duration', 'end_of_fade_in',
-           'energy', 'key', 'key_confidence', 'loudness', 'mode', 'mode_confidence', 'release',
-           'release_7digitalid', 'sections_confidence', 'sections_start', 'segments_confidence',
-           'segments_loudness_max', 'segments_loudness_max_time', 'segments_loudness_start',
-           'segments_pitches', 'segments_start', 'segments_timbre', 'similar_artists', 'song_hotttnesss',
-           'song_id', 'start_of_fade_out', 'tatums_confidence', 'tatums_start', 'tempo',
-           'time_signature', 'time_signature_confidence', 'title', 'track_7digitalid', 'track_id', 'year']
+headers = [
+    'Fields',
+    'Key',
+    'tempo',
+    'sections_start',
+    'segments_start',
+    'danceability',
+    'energy',
+    'loudness',
+    'mode',
+    'sections_confidence',
+    'artist_terms'
+]
 
 
 for header in headers:
@@ -54,5 +58,6 @@ for header in headers:
 df = pd.DataFrame(data)
 
 # Save the DataFrame as a CSV file
+output_directory = os.path.dirname(output_csv)
+os.makedirs(output_directory, exist_ok=True)
 df.to_csv(output_csv, index=False)
-
