@@ -4,7 +4,7 @@ import os
 
 # Read the CSV file
 df = pd.read_csv('C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\songDataSubSetV3.csv')
-output_csv = 'C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\songDataSubSetV3Encoding.csv'
+output_csv = 'C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\songDataSubSetV3GenreEncodingV2.csv'
 
 # Extract unique artist.terms values
 artist_terms = df['artist.terms'].unique()
