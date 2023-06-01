@@ -1,17 +1,22 @@
 import pandas as pd
+import numpy as np
+import os
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv('C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\songDataSetV3.csv')
+df = pd.read_csv('C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\songDataSubSetV3.csv')
 output_csv = 'C:\\Users\\SBD2RP\\OneDrive - MillerKnoll\\installs\\Desktop\\songDataSetV3Outliers.csv'
 
 # Select the columns that you want to check for outliers
 columns_to_check = [
     'song.segments_confidence', 'song.sections_confidence', 'song.segments_start', 'song.sections_start',
-    'songs.bars_start', 'song.bars_confidence', 'song.beats_start', 'song.beats_confidence',
+    'song.bars_start', 'song.bars_confidence', 'song.beats_start', 'song.beats_confidence',
     'song.duration', 'song.end_of_fade_in', 'song.key', 'song.key_confidence',
     'song.loudness', 'song.mode', 'song.mode_confidence', 'song.start_of_fade_out',
     'song.tempo', 'song.time_signature', 'song.time_signature_confidence'
 ]
+
+# Convert the selected columns to numeric type
+df[columns_to_check] = df[columns_to_check].apply(pd.to_numeric, errors='coerce')
 
 # Define a function to detect outliers using the IQR method
 def detect_outliers_iqr(data, threshold=1.5):
